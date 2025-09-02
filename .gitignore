@@ -127,3 +127,15 @@ media/
 
 # Static files
 staticfiles/
+cat >> .gitignore << 'EOF'
+# local only
+.env
+db.sqlite3
+*.sqlite3
+/.venv/
+/media/
+/staticfiles/
+/__pycache__/
+*.pyc
+.DS_Store
+EOF
