@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - The Mom Network{% endblock %}
+
+{% block content %}
+ Hero Section 
+<section class="hero-section bg-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">Join a community giving $2 to bless one parent/caregiver each week</h1>
+                <p class="lead mb-4">Together, we pool our weekly donations to make a meaningful impact on families across the United States who need support.</p>
+                <div class="d-flex gap-3">
+                    <a href="{% url 'donate' %}" class="btn btn-light btn-lg">Start Giving</a>
+                    <a href="{% url 'apply' %}" class="btn btn-outline-light btn-lg">Apply for Help</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <img src="{% static 'images/family-hero.jpg' %}" alt="Happy family" class="img-fluid rounded shadow">
+            </div>
+        </div>
+    </div>
+</section>
+
+ How It Works 
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold">How It Works</h2>
+            <p class="lead">Simple steps to make a big difference</p>
+        </div>
+        <div class="row">
+            <div class="col-md-4 text-center mb-4">
+                <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                    <i class="fas fa-users fa-2x text-primary"></i>
+                </div>
+                <h4>Community Gives</h4>
+                <p>Members contribute $2 weekly (or any amount) to our community pool.</p>
+            </div>
+            <div class="col-md-4 text-center mb-4">
+                <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                    <i class="fas fa-hand-holding-heart fa-2x text-primary"></i>
+                </div>
+                <h4>Family Selected</h4>
+                <p>Each week, we select one family from applications to receive the pooled donations.</p>
+            </div>
+            <div class="col-md-4 text-center mb-4">
+                <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                    <i class="fas fa-heart fa-2x text-primary"></i>
+                </div>
+                <h4>Impact Made</h4>
+                <p>The selected family receives the full week's donations to help with their needs.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+ Recent Winners 
+{% if recent_winners %}
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold">Recent Winners</h2>
+            <p class="lead">Families we've been able to help</p>
+        </div>
+        <div class="row">
+            {% for winner in recent_winners %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    {% if winner.photo %}
+                    <img src="{{ winner.photo.url }}" class="card-img-top" alt="{{ winner.winner_name }}" style="height: 200px; object-fit: cover;">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ winner.winner_name }}</h5>
+                        <p class="text-muted">{{ winner.city }}, {{ winner.state }}</p>
+                        <p class="card-text">{{ winner.story_summary|truncatewords:20 }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-success">${{ winner.amount_received }}</span>
+                            <small class="text-muted">{{ winner.week_ending }}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center">
+            <a href="{% url 'winners' %}" class="btn btn-primary">View All Winners</a>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+ Featured Stories 
+{% if featured_stories %}
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold">Community Stories</h2>
+            <p class="lead">Real stories from our community</p>
+        </div>
+        <div class="row">
+            {% for story in featured_stories %}
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ story.title }}</h5>
+                        <p class="text-muted">by {{ story.author_name }}</p>
+                        <p class="card-text">{{ story.story_content|truncatewords:30 }}</p>
+                        <a href="{% url 'story_detail' story.pk %}" class="btn btn-outline-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center">
+            <a href="{% url 'stories_list' %}" class="btn btn-primary">View All Stories</a>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+ Call to Action 
+<section class="py-5 bg-primary text-white">
+    <div class="container text-center">
+        <h2 class="display-5 fw-bold mb-4">Ready to Make a Difference?</h2>
+        <p class="lead mb-4">Join our community of givers and help support families in need across the United States.</p>
+        <div class="d-flex justify-content-center gap-3">
+            <a href="{% url 'donate' %}" class="btn btn-light btn-lg">Start Donating</a>
+            <a href="{% url 'apply' %}" class="btn btn-outline-light btn-lg">Apply for Help</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

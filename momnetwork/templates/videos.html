@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Videos - The Mom Network{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-primary">Community Videos</h1>
+        <p class="lead">Stories and updates from our community</p>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <div class="ratio ratio-16x9 mb-3">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Welcome to The Mom Network" allowfullscreen></iframe>
+                    </div>
+                    <h4>Welcome to The Mom Network</h4>
+                    <p class="text-muted">Learn about our mission and how we support families across the United States.</p>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <div class="ratio ratio-16x9 mb-3">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Success Stories" allowfullscreen></iframe>
+                    </div>
+                    <h4>Success Stories</h4>
+                    <p class="text-muted">Hear from families who have been helped by our community.</p>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <div class="ratio ratio-16x9 mb-3">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="How to Apply" allowfullscreen></iframe>
+                    </div>
+                    <h4>How to Apply for Help</h4>
+                    <p class="text-muted">Step-by-step guide on applying for assistance through The Mom Network.</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <h3 class="mb-4">Ready to Get Involved?</h3>
+                <a href="{% url 'donate' %}" class="btn btn-primary btn-lg me-3">Start Donating</a>
+                <a href="{% url 'apply' %}" class="btn btn-outline-primary btn-lg">Apply for Help</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

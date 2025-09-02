@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Mission - The Mom Network{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="text-center mb-5">
+                <h1 class="display-4 fw-bold text-primary">Our Mission</h1>
+                <p class="lead">Building a community of support for families across the United States</p>
+            </div>
+
+            <div class="card shadow-sm mb-5">
+                <div class="card-body p-5">
+                    <h2 class="h3 mb-4">What We Believe</h2>
+                    <p class="mb-4">We believe that every family deserves support during challenging times. By pooling our resources as a community, we can make a meaningful impact on the lives of parents and caregivers who are struggling to make ends meet.</p>
+                    
+                    <h2 class="h3 mb-4">How We Help</h2>
+                    <p class="mb-4">Each week, our community comes together to donate what they can - whether it's $2 or more. These donations are pooled together and given to one selected family to help with their immediate needs such as groceries, utilities, medical bills, or other essential expenses.</p>
+                    
+                    <h2 class="h3 mb-4">Our Impact</h2>
+                    <p class="mb-4">Since our founding, we have helped hundreds of families across the United States. Our community-driven approach ensures that help goes directly to those who need it most, creating real change in people's lives.</p>
+                    
+                    <h2 class="h3 mb-4">Join Our Community</h2>
+                    <p class="mb-0">Whether you're looking to give back or need support yourself, you're welcome in our community. Together, we can make a difference, one family at a time.</p>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="{% url 'donate' %}" class="btn btn-primary btn-lg me-3">Start Giving</a>
+                <a href="{% url 'apply' %}" class="btn btn-outline-primary btn-lg">Apply for Help</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

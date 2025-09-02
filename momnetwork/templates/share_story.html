@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block title %}Share Your Story - The Mom Network{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="text-center mb-5">
+                <h1 class="display-4 fw-bold text-primary">Share Your Story</h1>
+                <p class="lead">Help inspire others by sharing your experience with our community</p>
+            </div>
+
+            <div class="card shadow-sm">
+                <div class="card-body p-5">
+                    <form id="storyForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="author_name" class="form-label">Your Name *</label>
+                                <input type="text" class="form-control" id="author_name" name="author_name" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="author_email" class="form-label">Email Address *</label>
+                                <input type="email" class="form-control" id="author_email" name="author_email" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="author_city" class="form-label">City</label>
+                                <input type="text" class="form-control" id="author_city" name="author_city">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="author_state" class="form-label">State</label>
+                                <input type="text" class="form-control" id="author_state" name="author_state">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="story_type" class="form-label">Story Type *</label>
+                            <select class="form-control" id="story_type" name="story_type" required>
+                                <option value="">Select story type...</option>
+                                <option value="received_help">I Received Help</option>
+                                <option value="gave_help">I Gave Help</option>
+                                <option value="community_impact">Community Impact</option>
+                                <option value="inspiration">Inspiration</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Story Title *</label>
+                            <input type="text" class="form-control" id="title" name="title" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="story_content" class="form-label">Your Story *</label>
+                            <textarea class="form-control" id="story_content" name="story_content" rows="8" required placeholder="Share your experience with our community..."></textarea>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">Share My Story</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="mt-5">
+                <h3 class="text-center mb-4">Why Share Your Story?</h3>
+                <div class="row">
+                    <div class="col-md-4 text-center mb-4">
+                        <i class="fas fa-heart fa-3x text-primary mb-3"></i>
+                        <h5>Inspire Others</h5>
+                        <p>Your story can give hope to families going through similar challenges.</p>
+                    </div>
+                    <div class="col-md-4 text-center mb-4">
+                        <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                        <h5>Build Community</h5>
+                        <p>Connect with others who understand your journey and experiences.</p>
+                    </div>
+                    <div class="col-md-4 text-center mb-4">
+                        <i class="fas fa-lightbulb fa-3x text-primary mb-3"></i>
+                        <h5>Help Others Learn</h5>
+                        <p>Share insights and lessons that could help other families.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('storyForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData);
+    
+    try {
+        const response = await fetch('/api/stories/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]')?.value || ''
+            },
+            body: JSON.stringify(data)
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok) {
+            alert('Thank you for sharing your story! It will be reviewed before publication.');
+            this.reset();
+        } else {
+            alert('There was an error submitting your story. Please try again.');
+        }
+    } catch (error) {
+        alert('There was an error submitting your story. Please try again.');
+    }
+});
+</script>
+{% endblock %}

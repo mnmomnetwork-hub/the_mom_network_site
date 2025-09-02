@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact Us - The Mom Network{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="text-center mb-5">
+                <h1 class="display-4 fw-bold text-primary">Contact Us</h1>
+                <p class="lead">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card shadow-sm">
+                        <div class="card-body p-5">
+                            <form method="post">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    {{ form.name.label_tag }}
+                                    {{ form.name }}
+                                </div>
+                                <div class="mb-3">
+                                    {{ form.email.label_tag }}
+                                    {{ form.email }}
+                                </div>
+                                <div class="mb-3">
+                                    {{ form.subject.label_tag }}
+                                    {{ form.subject }}
+                                </div>
+                                <div class="mb-4">
+                                    {{ form.message.label_tag }}
+                                    {{ form.message }}
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body p-4">
+                            <h5 class="card-title">Get in Touch</h5>
+                            <div class="mb-3">
+                                <i class="fas fa-envelope text-primary me-2"></i>
+                                <a href="mailto:MNMomNetwork@gmail.com">MNMomNetwork@gmail.com</a>
+                            </div>
+                            <div class="mb-3">
+                                <i class="fas fa-clock text-primary me-2"></i>
+                                Response time: 24-48 hours
+                            </div>
+                            <div class="mb-3">
+                                <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                                Serving families across the United States
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card shadow-sm mt-4">
+                        <div class="card-body p-4">
+                            <h5 class="card-title">Quick Links</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="{% url 'apply' %}" class="text-decoration-none">Apply for Help</a></li>
+                                <li><a href="{% url 'donate' %}" class="text-decoration-none">Make a Donation</a></li>
+                                <li><a href="{% url 'faq' %}" class="text-decoration-none">Frequently Asked Questions</a></li>
+                                <li><a href="{% url 'share_story' %}" class="text-decoration-none">Share Your Story</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

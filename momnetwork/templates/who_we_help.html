@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}Who We Help - The Mom Network{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="text-center mb-5">
+                <h1 class="display-4 fw-bold text-primary">Who We Help</h1>
+                <p class="lead">Supporting parents and caregivers across the United States</p>
+            </div>
+
+            <div class="row mb-5">
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-baby fa-3x text-primary mb-3"></i>
+                            <h4>New Parents</h4>
+                            <p>Parents with newborns facing unexpected medical bills or loss of income during maternity/paternity leave.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-home fa-3x text-primary mb-3"></i>
+                            <h4>Single Parents</h4>
+                            <p>Single mothers and fathers working hard to provide for their families while managing all responsibilities alone.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-heartbeat fa-3x text-primary mb-3"></i>
+                            <h4>Families Facing Medical Challenges</h4>
+                            <p>Parents dealing with their own or their children's medical issues and the financial burden that comes with healthcare.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-briefcase fa-3x text-primary mb-3"></i>
+                            <h4>Families Experiencing Job Loss</h4>
+                            <p>Parents who have recently lost employment and are struggling to cover basic needs while searching for new opportunities.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-5">
+                <div class="card-body p-5">
+                    <h2 class="h3 mb-4">Our Selection Process</h2>
+                    <p class="mb-4">We carefully review each application to ensure help goes to families with genuine need. Our selection process considers:</p>
+                    <ul class="mb-4">
+                        <li>Current financial situation and immediate needs</li>
+                        <li>Family size and circumstances</li>
+                        <li>Temporary vs. long-term challenges</li>
+                        <li>Geographic diversity across the United States</li>
+                    </ul>
+                    <p class="mb-0">Every family's situation is unique, and we strive to help those who would benefit most from our community's support.</p>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <h3 class="mb-4">Ready to Apply or Help Others?</h3>
+                <a href="{% url 'apply' %}" class="btn btn-primary btn-lg me-3">Apply for Help</a>
+                <a href="{% url 'donate' %}" class="btn btn-outline-primary btn-lg">Start Donating</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

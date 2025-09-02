@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ story.title }} - The Mom Network{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm">
+                <div class="card-body p-5">
+                    <div class="d-flex justify-content-between align-items-start mb-4">
+                        <span class="badge bg-primary">{{ story.get_story_type_display }}</span>
+                        <small class="text-muted">{{ story.created_at|date:"M d, Y" }}</small>
+                    </div>
+                    <h1 class="h2 mb-3">{{ story.title }}</h1>
+                    <p class="text-muted mb-4">
+                        by {{ story.author_name }}
+                        {% if story.author_city and story.author_state %}
+                        from {{ story.author_city }}, {{ story.author_state }}
+                        {% endif %}
+                    </p>
+                    <div class="story-content">
+                        {{ story.story_content|linebreaks }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <a href="{% url 'stories_list' %}" class="btn btn-outline-primary me-3">← Back to Stories</a>
+                <a href="{% url 'share_story' %}" class="btn btn-primary">Share Your Story</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

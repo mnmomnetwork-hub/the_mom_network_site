@@ -1,0 +1,29 @@
+[
+  {
+    "State": "Minnesota",
+    "County": "Hennepin",
+    "Category": "Food Help",
+    "Organization Name": "Second Harvest Heartland",
+    "Description": "Large food bank offering free groceries and meals to families in need.",
+    "Phone": "651-484-5117",
+    "Website": "https://www.2harvest.org/"
+  },
+  {
+    "State": "Minnesota",
+    "County": "Ramsey",
+    "Category": "Diapers & Baby Supplies",
+    "Organization Name": "Diaper Bank of Minnesota",
+    "Description": "Provides free diapers and baby supplies to qualifying families.",
+    "Phone": "651-789-2426",
+    "Website": "https://www.diaperbankmn.org/"
+  },
+  {
+    "State": "Minnesota",
+    "County": "Anoka",
+    "Category": "Clothing & School Supplies",
+    "Organization Name": "Hope 4 Youth Closet",
+    "Description": "Offers free clothing and school supplies for youth and families.",
+    "Phone": "763-323-2066",
+    "Website": "https://www.hope4youthmn.org/"
+  }
+]
